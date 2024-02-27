@@ -8,7 +8,7 @@
 <body>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Count correct answers
+    
     $correct_answers = 0;
 
     // Check test questions
