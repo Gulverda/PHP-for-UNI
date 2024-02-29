@@ -60,7 +60,7 @@
         //------ Foreach ------
         $a = [1, 4, 6, 9];
         foreach ($a as $v) {
-            echo $v . "<br>"; // Changed "<hr>" to "<br>" for line break
+            echo $v . "<br>"; 
         }
         
 
