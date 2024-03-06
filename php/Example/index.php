@@ -83,7 +83,6 @@ echo "</div>";
     .subject-list {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        /* Adjust as needed */
         grid-gap: 10px;
     }
 
