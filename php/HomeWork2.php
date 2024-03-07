@@ -7,7 +7,6 @@
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
     $student_name = $_POST['student_name'];
     $surname = $_POST['surname'];
     $course = $_POST['course'];
