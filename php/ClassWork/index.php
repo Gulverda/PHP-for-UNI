@@ -28,10 +28,15 @@
             <div class="row">
                 <div class="question">
                     <?=$item['question']?>
-                    <!-- <input type="text" readonly name="question1[]" value="<?=$item['question']?>"> -->
-                    <input type="hidden" name="question[]" value="<?=$item['question']?>">
+                    <?php if(isset($item['answers'])): ?>
+                        <?php foreach($item['answers'] as $answer): ?>
+                            <input type="radio" name="answer[]" value="<?=$answer?>"> <?=$answer?><br>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <input type="hidden" name="question[]" value="<?=$item['question']?>">
+                        <input type="text" placeholder="answer" name="answer[]">
+                    <?php endif; ?>
                 </div>
-                <div><input type="text" placeholder="answer" name="answer[]"></div>
                 <div><?=$item['grade']?></div>
             </div>
             <?php
