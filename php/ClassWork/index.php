@@ -1,10 +1,24 @@
 <?php
-    include "array_of_questions.php";
-    // print_r($questions);
-    // print_r(array_keys($questions));
-    // $questions_index = array_keys($questions);
-    // shuffle($questions_index);
-    shuffle($questions);
+include "array_of_questions.php"; // Assuming this file contains the $questions array
+
+// Get the keys of the questions array
+$keys = array_keys($questions);
+
+// Shuffle the keys
+shuffle($keys);
+
+// Create a new array to hold shuffled questions
+$shuffledQuestions = [];
+
+// Reassign the questions array with shuffled keys
+foreach ($keys as $key) {
+    $shuffledQuestions[$key] = $questions[$key];
+    // Shuffle the answers within each question
+    if (isset($shuffledQuestions[$key]['answers'])) {
+        shuffle($shuffledQuestions[$key]['answers']);
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,18 +37,18 @@
         </div>
         <form action="grade.php" method="post">
             <?php 
-                foreach($questions as $item):
+                foreach($shuffledQuestions as $index => $item):
             ?>
             <div class="row">
                 <div class="question">
                     <?=$item['question']?>
                     <?php if(isset($item['answers'])): ?>
                         <?php foreach($item['answers'] as $answer): ?>
-                            <input type="radio" name="answer[]" value="<?=$answer?>"> <?=$answer?><br>
+                            <input type="radio" name="answer[<?=$index?>]" value="<?=$answer?>"> <?=$answer?><br>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <input type="hidden" name="question[]" value="<?=$item['question']?>">
-                        <input type="text" placeholder="answer" name="answer[]">
+                        <input type="hidden" name="question[<?=$index?>]" value="<?=$item['question']?>">
+                        <input type="text" placeholder="answer" name="answer[<?=$index?>]">
                     <?php endif; ?>
                 </div>
                 <div><?=$item['grade']?></div>
