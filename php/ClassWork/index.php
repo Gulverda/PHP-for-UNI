@@ -1,5 +1,5 @@
 <?php
-include "array_of_questions.php"; // Assuming this file contains the $questions array
+include "array_of_questions.php";
 
 // Get the keys of the questions array
 $keys = array_keys($questions);
