@@ -13,7 +13,7 @@ $shuffledQuestions = [];
 // Reassign the questions array with shuffled keys
 foreach ($keys as $key) {
     $shuffledQuestions[$key] = $questions[$key];
-    // Shuffle the answers within each question
+    // Shuffle answers within each question
     if (isset($shuffledQuestions[$key]['answers'])) {
         shuffle($shuffledQuestions[$key]['answers']);
     }
